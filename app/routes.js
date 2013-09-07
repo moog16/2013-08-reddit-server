@@ -11,14 +11,19 @@ module.exports = function(app, config) {
   });
 
   // Auth
-  app.post('/login', function(req, res, next) {
+  app.post('/login',
+      passport.authenticate('local', { successRedirect: '/',
+                                       failureRedirect: '/login'})
+  );
+  //   // function(req, res, next) {
     // console.log('got post request');
     // console.log('got data', req.body);
-    console.log(passport.authenticate);
-    passport.authenticate('local', function(err, data, info) {
-      console.log("e", err, data, info);
-    })(req, res, next);
-  });
+    // console.log(passport.authenticate);
+    // passport.authenticate('local', function(err, data, info) {
+      // console.log("e", err, data, info);
+
+    // })(req, res, next);
+  // });
 
   app.post('/signup', function(req, res, next) {
     // if(getUserInfo() === false) {

@@ -7,7 +7,7 @@ module.exports = function(app, config) {
 
   var UserSchema = new Schema({
     email: String,
-    password: String //,
+    password: String
     // date: { type: Date, default: Date.now }
   });
   var User = mongoose.model( 'User', UserSchema );
