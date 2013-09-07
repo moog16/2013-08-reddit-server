@@ -18,7 +18,7 @@ module.exports = function(app, config) {
   );
 
   app.post('/signup', function(req, res) {
-    signup(app, config, req,res);
+    signup(req,res);
   });
 
   app.get('/api/news', function(req, res, next) {
