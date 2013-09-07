@@ -4,6 +4,21 @@ var mongoose        = require('mongoose'),
 
 module.exports = function(app, config) {
   var passport = app.get('passport');
-  // Implement the passport local strategy
-  
-}
+  passport.use(new LocalStrategy({
+      usernameField: 'email'
+    },
+    function(username, password, done) {
+      console.log(username, password);
+      User.findOne({ email: username }, function(err, user) {
+        if (err) { return done(err); }
+        if (!user) {
+          return done(null, false, { message: 'Incorrect username.' });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: 'Incorrect password.' });
+        }
+        return done(null, user);
+      });
+    }
+  ));
+};

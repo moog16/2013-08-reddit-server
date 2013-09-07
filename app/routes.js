@@ -1,18 +1,6 @@
 var passport      = require('passport');
 
 module.exports = function(app, config) {
-  // Setup CORS
-  app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', config.clientUrl);
-    res.header('Access-Control-Allow-Headers', 'Content-Type,X-Requested-With');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-  });
-
-  app.options('*', function(req, res){
-    res.send(200); 
-  });
-
   // Setup API blockade
   app.all('/api/*', function(req, res, next) {
     // passport gives us a 'isAuthenticated' method
@@ -23,12 +11,23 @@ module.exports = function(app, config) {
   });
 
   // Auth
-  app.post('/api/login', function(req, res, next) {
-    // Implement login
+  app.post('/login', function(req, res, next) {
+    // console.log('got post request');
+    // console.log('got data', req.body);
+    console.log(passport.authenticate);
+    passport.authenticate('local', function(err, data, info) {
+      console.log("e", err, data, info);
+    })(req, res, next);
   });
 
-  app.post('/api/signup', function(req, res, next) {
-    // Implement signup
+  app.post('/signup', function(req, res, next) {
+    // if(getUserInfo() === false) {
+    //   //username is take
+    //   //redirect('/signup');
+    // } else {
+    //   //instantiate the user model
+    //   //redirect(...login page)
+    // }
   });
 
   app.get('/api/news', function(req, res, next) {
@@ -38,4 +37,6 @@ module.exports = function(app, config) {
   app.get('/api/rate', function(req, res, next) {
     // Implement news rating
   });
-}
+};
+
+// curl -X POST -d "email=ruben&password=pass" http://localhost:3000/login

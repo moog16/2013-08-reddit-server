@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     },
     watch: {
       js: {
-        files: ['app/**/*.js', 'server.js']
+        files: ['app/**/*.js']
       } //,
       // html: {
       //   // files: ['index.html']
