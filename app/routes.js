@@ -1,4 +1,5 @@
-var passport      = require('passport');
+var passport      = require('passport'),
+    signup        = require('../config/signup');
 
 module.exports = function(app, config) {
   // Setup API blockade
@@ -15,24 +16,9 @@ module.exports = function(app, config) {
       passport.authenticate('local', { successRedirect: '/',
                                        failureRedirect: '/login'})
   );
-  //   // function(req, res, next) {
-    // console.log('got post request');
-    // console.log('got data', req.body);
-    // console.log(passport.authenticate);
-    // passport.authenticate('local', function(err, data, info) {
-      // console.log("e", err, data, info);
 
-    // })(req, res, next);
-  // });
-
-  app.post('/signup', function(req, res, next) {
-    // if(getUserInfo() === false) {
-    //   //username is take
-    //   //redirect('/signup');
-    // } else {
-    //   //instantiate the user model
-    //   //redirect(...login page)
-    // }
+  app.post('/signup', function(req, res) {
+    signup(app, config, req,res);
   });
 
   app.get('/api/news', function(req, res, next) {

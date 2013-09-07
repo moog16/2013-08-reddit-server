@@ -9,7 +9,6 @@ module.exports = function(app, config) {
       usernameField: 'email'
     },
     function(username, password, done) {
-      // console.log(username, password);
       User.findOne({ email: username }, function(err, user) {
         console.log(user);
         if (err) { return done(err); }

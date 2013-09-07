@@ -14,7 +14,7 @@ module.exports = function() {
 
   // Database
   var db = require('../config/db')(app, config);
-  
+
   // Middleware
   require('../config/express')(app, config);
 
