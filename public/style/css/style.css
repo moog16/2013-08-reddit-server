@@ -1,0 +1,38 @@
+.btn {
+  margin:2px;
+}
+
+body {
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+}
+
+.articles {
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  margin: 5px;
+  background-image: url(tweed.png);
+  border-radius: 3px;
+  vertical-align: top;
+  padding-bottom: 10px;
+  box-shadow: 2px 2px 3px #cecece;
+}
+
+.articles img {
+  margin: 10px;
+  width: 80px;
+  height: 80px;
+  box-shadow: 2px 2px 3px #333333;
+}
+
+.red, a {
+  color: #FF252E;
+}
+
+.pageTitle {
+  text-align: center;
+  font-size: 5em;
+}

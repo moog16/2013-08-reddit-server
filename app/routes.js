@@ -13,8 +13,8 @@ module.exports = function(app, config) {
 
   // Auth
   app.post('/login',
-      passport.authenticate('local', { successRedirect: '/',
-                                       failureRedirect: '/login'})
+      passport.authenticate('local', { successRedirect: '#/',
+                                       failureRedirect: '#/login'})
   );
 
   app.post('/signup', function(req, res) {
@@ -22,7 +22,7 @@ module.exports = function(app, config) {
   });
 
   app.get('/api/news', function(req, res, next) {
-    // Implement news api
+    // res.send('../api/news');
   });
 
   app.get('/api/rate', function(req, res, next) {

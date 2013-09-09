@@ -1,5 +1,4 @@
 var mongoose        = require('mongoose'),
-// db = mongoose.createConnection('mongodb://localhost/myapp-dev'),
 User = mongoose.model('User');
 
 module.exports = function(req, res) {
